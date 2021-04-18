@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="/new/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: rgb(35, 94, 182)">
@@ -110,34 +111,29 @@
     <div class="container">
       <div class="row" id="contactSection">
         <div class="col-md-12">
-          <form>
+          <form id="submit-form" action="">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label>Full name</label>
-                <input type="text" class="form-control" id="inputName" placeholder="Full name">
-                <label style="display: none;" id="Fname">Enter minimum 4 characters</label>
-                <label style="display: none;" id="Sname">Enter atleast 4 characters or only Alpha characters</label>
+                <input name="fname" type="text" class="form-control" placeholder="Full name">
               </div>
               <div class="form-group col-md-6">
                 <label>Place</label>
-                <input type="text" class="form-control" id="inputPlace" placeholder="Place">
-                <label style="display: none;" id="Pname">Alpha characters only</label>
+                <input name="pname" type="text" class="form-control" placeholder="Place">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label>Email</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                <label style="display: none;" id="Ename">Enter a valid email</label>
+                <input type="email" name="emailaddress" class="form-control" placeholder="Email">
               </div>
               <div class="form-group col-md-6">
                 <label>Mobile</label>
-                <input type="tel" class="form-control" id="inputMobile" placeholder="Mobile">
-                <label style="display: none;" id="Mname">Phone number not valid</label>
+                <input type="text" name="mnumber" class="form-control" placeholder="Mobile">
               </div>
               <div class="form-group col-md-12">
                 <label>Message</label>
-                <textarea class="form-control" cols=" 30" rows="10" placeholder="Type your message here"></textarea>
+                <textarea class="form-control" name="message" cols=" 30" rows="10" placeholder="Type your message here"></textarea>
               </div>
               <button class="sendButton" id="btn" style="background-color: darkturquoise;">Send</button>
           </form>
@@ -148,69 +144,71 @@
   <div>
     <h5 class="Copy text-white text-center" style="background-color: rgb(35, 94, 182)">Copyrights</h5>
   </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
     integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-    crossorigin="anonymous"></script>
+    <script src="<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
   <script>
-    $(document).ready(function () {
-      nflag=1, pflag=1, eflag=1, mflag=1
-      $("#inputName").blur(function () {
-        var text = $(this).val()
-        if ((/^[a-zA-Z]+$/.test(text) == false)||(text.length<4)) {
-          $("#Sname").show()
-          nflag=1
-        }else {
-          $("#Sname").hide()
-          nflag=0
-        }
-      })
-      $("#inputPlace").blur(function () {
-        var text = $(this).val()
-        if (/^[a-zA-Z]+$/.test(text) == false) {
-          $("#Pname").show()
-          pflag=1
-        } else {
-          $("#Pname").hide()
-          pflag=0
-        }
-      })
-      $("#inputEmail").blur(function () {
-        var email = $(this).val()
-        if (/^[a-z0-9]+\@[a-z]+\.[a-z]+$/.test(email) == false) {
-          $("#Ename").show()
-          eflag=1
-        }else {
-          $("#Ename").hide()
-          eflag=0
-        }
-      })
-      $("#inputMobile").blur(function (){
-        var tel = $(this).val()
-        if((/^[0-9]+$/.test(tel) == false)||(tel.length !=10)) {
-          $("#Mname").show()
-          mflag=1
-        }else{
-          $("#Mname").hide()
-          mflag=0
-        }
-      })
-        $("#btn").click(function(){
-          if(nflag==0 && pflag==0 && eflag==0 && mflag==0){
-            alert("Your message has been sent")
-          }else{
-            alert("Complete the form and send")
-          }
-       
-      })
+    $("#submit-form").submit((e)=>{
+        e.preventDefault()
+        $.ajax({
+            url:"https://script.google.com/macros/s/AKfycbwabtYh6SneL7WhKcjmEEGZPgqxn4kAdjlwT2MA/exec",
+            data:$("#submit-form").serialize(),
+            method:"post",
+            success:function (response){
+                alert("Form submitted successfully")
+                window.location.reload()
+                //window.location.href="https://google.com"
+            },
+            error:function (err){
+                alert("Something Error")
+
+            }
+        })
     })
+</script>
+  <script>
+    $(document).ready(function(){
+      $("#submit-form").validate({
+        rules:{
+          fname:{
+            required:true,
+            minlength:4,
+            maxlength:8
+            },
+            pname:{
+              required:true,
+              minlength:3
+            },
+            emailaddress:{
+              required:true,
+              email:true
+
+            },
+            mnumber:{
+              required:true,
+              number:true,
+              minlength:10,
+              maxlength:10
+            }
+        },
+        messages:{
+          fname:{
+            minlength:"Enter at least 4 characters",
+            maxlength:"Enter no more than 8 characters"
+
+          },
+          pname:{
+            minlength:"Enter at least 3 characters"
+          }
+        }
+      
+    })
+  })
   </script>
 </body>
 
