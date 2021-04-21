@@ -118,28 +118,28 @@
               <div class="form-group col-md-6">
                 <label>Full name</label>
                 <input name="fname" id="fname" type="text" class="form-control" placeholder="Full name" required>
-                <label id="error1" style="display: none;" >Enter full name</label>
+                <label id="error1" style="display: none; color: red;" >*Enter full name</label>
               </div>
               <div class="form-group col-md-6">
                 <label>Place</label>
                 <input name="pname" id="pname" type="text" class="form-control" placeholder="Place" required>
-                <label id="error2" style="display: none;">Place in invalid</label>
+                <label id="error2" style="display: none; color: red;">*Place in invalid</label>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label>Email</label>
                 <input type="email" name="emailaddress" id="emailaddress" class="form-control" placeholder="Email" required>
-                <label id="error3" style="display: none;">Enter valid email</label>
+                <label id="error3" style="display: none; color: red;">*Enter valid email</label>
               </div>
               <div class="form-group col-md-6">
                 <label>Mobile</label>
                 <input type="text" name="mnumber" id="mnumber" class="form-control" placeholder="Mobile" required>
-                <label id="error4" style="display: none;">Phone number is invalid</label>
+                <label id="error4" style="display: none; color: red;">*Phone number is invalid</label>
               </div>
               <div class="form-group col-md-12">
                 <label>Message</label>
-                <textarea class="form-control" name="message" cols=" 30" rows="10" placeholder="Type your message here"></textarea>
+                <textarea class="form-control" name="message" idcols=" 30" rows="10" placeholder="Type your message here" required></textarea>
               </div>
               <button class="sendButton text-white bg-info" id="btn" style="width: 100%;">Send</button>
           </form>
